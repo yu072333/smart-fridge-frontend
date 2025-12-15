@@ -1,38 +1,284 @@
+/* =============================
+ 🧊 智慧冰箱 Morandi 風格版
+ 淡綠 × 奶灰 × 白色系
+============================= */
+
+body {
+  background: #F5F4F2;
+  margin: 0;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: #3C3C3C;
+}
+
 .App {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =============================
+📊 儀表板區塊
+============================= */
+.card {
+  background: #FAFAFA;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(60, 60, 60, 0.08);
+  padding: 20px;
+}
+
+.dashboard {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.dash-box {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(60, 60, 60, 0.05);
+}
+
+h1 {
+  color: #58595b;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin: 0 0 10px 0;
+  color: #7f8c8d;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e0ddd8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.low {
+  background: #A3B9A7; /* 淡綠 */
+}
+
+.progress-fill.mid {
+  background: #D6C6B9; /* 奶茶 */
+}
+
+.progress-fill.high {
+  background: #D89A9E; /* 玫瑰粉 */
+}
+
+.dash-info {
+  text-align: right;
+  color: #7F7F7F;
+}
+
+.dash-value {
+  font-size: 1.8em;
+  color: #3C3C3C;
+}
+
+/* =============================
+➕ 新增食材表單
+============================= */
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input,
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #F0EFED;
+  font-family: inherit;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+button {
+  background: #A3B9A7;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #8EA693;
+}
+
+/* =============================
+📦 庫存清單
+============================= */
+.inventory-list {
+  display: grid;
+  gap: 10px;
+}
+
+.inventory-list h3 {
+  border-bottom: 2px solid #EEE;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.inventory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #E5E2DF;
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+.inventory-item strong {
+  color: #3C3C3C;
+}
+
+.tag {
+  margin-left: 8px;
+  background: #EEE;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #7F7F7F;
+  font-size: 0.85em;
+}
+
+.meta {
+  font-size: 0.9em;
+  color: #7F7F7F;
+}
+
+.inventory-item input[type="number"] {
+  width: 50px;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #DDD;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inventory-item button {
+  background: #27ae60;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.inventory-item button:hover {
+  background: #219150;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* =============================
+🤖 Chatbot 對話框
+============================= */
+.chatbot {
+  width: 340px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(80, 80, 80, 0.1);
+  overflow: hidden;
+  height: 80vh;
+  min-height: 600px;
+}
+
+.chat-header {
+  background: #A3B9A7;
   color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
+.chat-body {
+  flex: 1;
+  background: #F6F6F5;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.message {
+  padding: 10px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.message.user {
+  background: #A3B9A7;
+  color: white;
+  align-self: flex-end;
+}
+
+.message.ai {
+  background: white;
+  align-self: flex-start;
+  color: #3C3C3C;
+}
+
+.typing {
+  color: #999;
+  font-size: 0.8em;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #E0E0E0;
+  background: #F9F9F9;
+}
+
+.chat-footer button {
+  margin-left: 8px;
+  background: #A3B9A7;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-footer button:hover {
+  background: #8EA693;
+}
+
+/* =============================
+🌈 Scrollbar 美化
+============================= */
+.chat-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
 }
