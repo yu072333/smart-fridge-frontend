@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const API_URL = "https://smart-fridge-backend-zbkd.onrender.com/api";
+const API_URL = "https://smart-fridge-backend-zbkd.onrender.com";
 
 
 function App() {
